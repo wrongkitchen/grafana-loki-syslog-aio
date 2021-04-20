@@ -1,5 +1,10 @@
 networks:
   loki: {}
+volumes:
+  prometheus_data:
+    external: true
+  minio_data:
+    external: true
 services:
   cadvisor:
     container_name: cadvisor
@@ -74,6 +79,8 @@ services:
     - published: 9001
       target: 9000
     restart: always
+    volumes:
+      - minio_data:/data:ro  
   node-exporter:
     command: --path.rootfs=/host
     container_name: node-exporter
@@ -103,6 +110,7 @@ services:
     restart: always
     volumes:
     - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    - prometheus_data:/prometheus:ro
   promtail:
     command: -config.file=/etc/promtail/promtail-config.yml
     container_name: promtail
