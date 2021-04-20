@@ -5,6 +5,8 @@ volumes:
     external: true
   minio_data:
     external: true
+  grafana_data:
+    external: true
 services:
   cadvisor:
     container_name: cadvisor
@@ -40,6 +42,7 @@ services:
     - ./config/grafana/provisioning/datasources:/etc/grafana/provisioning/datasources:ro
     - ./config/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
     - ./config/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    - grafana_data:/var/lib/grafana
   loki:
     command: -config.file=/etc/loki/loki-config.yml
     container_name: loki
