@@ -83,7 +83,7 @@ services:
       target: 9000
     restart: always
     volumes:
-      - minio_data:/data:ro  
+      - minio_data:/data
   node-exporter:
     command: --path.rootfs=/host
     container_name: node-exporter
@@ -113,7 +113,7 @@ services:
     restart: always
     volumes:
     - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
-    - prometheus_data:/prometheus:ro
+    - prometheus_data:/prometheus
   promtail:
     command: -config.file=/etc/promtail/promtail-config.yml
     container_name: promtail
