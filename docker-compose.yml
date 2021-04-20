@@ -7,6 +7,8 @@ volumes:
     external: true
   grafana_data:
     external: true
+  grafana_config:
+    external: true
   loki_tmp:
     external: true
 services:
@@ -45,6 +47,7 @@ services:
     - ./config/grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards:ro
     - ./config/grafana/dashboards:/var/lib/grafana/dashboards:ro
     - grafana_data:/var/lib/grafana
+    - grafana_config:/etc/grafana
   loki:
     command: -config.file=/etc/loki/loki-config.yml
     container_name: loki
