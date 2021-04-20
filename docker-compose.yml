@@ -54,7 +54,7 @@ services:
       target: 3100
     restart: always
     volumes:
-    - ./config/loki-config-s3.yml:/etc/loki/loki-config.yml:ro
+      - ./config/loki-config-filesystem.yml:/etc/loki/loki-config.yml:ro
   minio:
     command: -c 'mkdir -p /data/loki && /usr/bin/minio server /data'
     container_name: minio
