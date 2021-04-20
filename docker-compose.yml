@@ -65,13 +65,13 @@ services:
       - CMD
       - curl
       - -f
-      - http://localhost:9000/minio/health/live
+      - http://localhost:9001/minio/health/live
       timeout: 20s
     image: minio/minio:latest
     networks:
       loki: null
     ports:
-    - published: 9000
+    - published: 9001
       target: 9000
     restart: always
   node-exporter:
