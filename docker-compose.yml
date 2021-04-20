@@ -7,6 +7,8 @@ volumes:
     external: true
   grafana_data:
     external: true
+  loki_tmp:
+    external: true
 services:
   cadvisor:
     container_name: cadvisor
@@ -58,6 +60,7 @@ services:
     restart: always
     volumes:
       - ./config/loki-config-filesystem.yml:/etc/loki/loki-config.yml:ro
+      - loki_tmp:/tmp
   minio:
     command: -c 'mkdir -p /data/loki && /usr/bin/minio server /data'
     container_name: minio
