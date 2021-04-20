@@ -134,6 +134,7 @@ services:
     volumes:
     - ./config/promtail-config.yml:/etc/promtail/promtail-config.yml:ro
     - /var/log:/var/log:ro
+    - /root/cpb-eshop-frontend-unittest/logs:/var/cpblog:ro
   syslog-ng:
     command: -edv
     container_name: syslog-ng

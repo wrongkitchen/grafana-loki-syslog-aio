@@ -21,8 +21,13 @@ scrape_configs:
       target_label: 'host'
 - job_name: system
   static_configs:
-  - targets:
-      - localhost
-    labels:
-      job: varlogs
-      __path__: /var/log/*log
+  - labels:
+    job: varlogs
+    host: localhost
+    __path__: /var/log/*log
+- job_name: cpb_eshop
+  static_configs:
+  - labels:
+    job: varlogs
+    host: localhost
+    __path__: /var/cpblog/*log
