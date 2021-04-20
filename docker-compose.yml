@@ -133,6 +133,7 @@ services:
     restart: always
     volumes:
     - ./config/promtail-config.yml:/etc/promtail/promtail-config.yml:ro
+    - /var/log:/var/log:ro
   syslog-ng:
     command: -edv
     container_name: syslog-ng
