@@ -37,8 +37,6 @@ services:
   loki:
     command: -config.file=/etc/loki/loki-config.yml
     container_name: loki
-    depends_on:
-    - minio
     image: grafana/loki:latest
     networks:
       loki: null
@@ -50,23 +48,6 @@ services:
     volumes:
       - ./config/loki-config-filesystem.yml:/etc/loki/loki-config.yml:ro
       - loki_tmp:/tmp
-  prometheus:
-    command:
-    - --config.file=/etc/prometheus/prometheus.yml
-    - --storage.tsdb.path=/prometheus
-    - --web.enable-admin-api
-    - --web.enable-lifecycle
-    container_name: prometheus
-    image: prom/prometheus:latest
-    networks:
-      loki: null
-    ports:
-    - published: 9090
-      target: 9090
-    restart: always
-    volumes:
-    - ./config/prometheus.yml:/etc/prometheus/prometheus.yml:ro
-    - prometheus_data:/prometheus
   promtail:
     command: -config.file=/etc/promtail/promtail-config.yml
     container_name: promtail
