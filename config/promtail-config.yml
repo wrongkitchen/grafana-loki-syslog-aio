@@ -42,4 +42,4 @@ scrape_configs:
       labels:
         job: node_red_ping
         host: localhost
-        __path__: /var/nodered/node_red_logs/ping/*log
+        __path__: /var/nodered/ping/*log
