@@ -40,6 +40,6 @@ scrape_configs:
     - targets:
       - localhost
       labels:
-        job: node_red
+        job: node_red_ping
         host: localhost
-        __path__: /var/nodered/node_red_logs/*/*log
+        __path__: /var/nodered/node_red_logs/ping/*log
